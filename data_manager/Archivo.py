@@ -28,11 +28,15 @@ class Archivo:
         return dataframe
 
     #Función que lee un archivo CVS.
-    def ReadCVS(self, df):
-        pass
+    def ReadCVS(self, path,file):
+        my_file = open(path + '\\' +file, "r", encoding='utf-8')
+        content_list = my_file.readlines()
+        for i in range(0,(len(content_list)-1)):
+            content_list[i] = content_list[i][:-1]
+        return content_list
 
     #Función que convierte un dataframe en un archivo .csv
-    def toCSV(self, df, farmacia, path):
+    def toCSV(self, df, farmacia, path, i):
 
         #Dependiendo de la farmacia, se creará un archivo con un nombre distinto.
         if farmacia == 'Dr. Simi':
@@ -44,5 +48,8 @@ class Archivo:
         elif farmacia == 'Ahumada':
             df.to_csv(path + '\data_Ahumada.csv', index=False)
 
-        else:
-            df.to_csv(path + '\medicamentos.csv', index=False)
+        elif farmacia == 'Final':
+            df.to_csv(path + '\medicamentos' + str(i) + '.csv', index=False)
+
+        elif farmacia == 'no farmacia':
+            df.to_csv(path + '\parámetros.csv' , index=False)
