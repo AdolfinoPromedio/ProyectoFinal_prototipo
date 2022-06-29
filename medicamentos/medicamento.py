@@ -4,7 +4,7 @@ class Medicamento:
     def __init__(self, nombre, info, precio, UF):
         self.nombre = nombre
         self.info = info
-        self.precio = float(precio[1:].replace('.','')) #Toma el precio ($1.690) como string y lo convierte a float.
+        self.precio = precio
         self.precioUF = self.precio/UF
 
     #Getters. (En caso de necesitarlos.)
@@ -23,4 +23,3 @@ class Medicamento:
     #Imprimir todos los datos.
     def getDatos(self):
         print("Nombre: " + self.nombre, "Info: " + self.info, "Precio: " + str(self.precio), "Precio UF: " + str(self.precioUF))
-
